@@ -251,7 +251,6 @@ dialog::backdrop { background: var(--overlay); }
           <p class="label">Work with us</p>
           <h2 id="cta-h">Bring The Big Question to your audience</h2>
           <p>We produce short, fast, street-level conversations that people actually watch and share. We're looking for new partners, sponsors and channels to keep the series going.</p>
-          <a class="btn" id="contact-btn" href="#">Get in touch</a>
         </div>
         <ul id="pitch"></ul>
       </div>
@@ -271,7 +270,6 @@ dialog::backdrop { background: var(--overlay); }
 
 <script>
 /* ===== Edit here ===================================================== */
-const CONTACT_EMAIL = "";            // e.g. "hello@example.com" — the "Get in touch" button uses this
 const UPDATED = "November 2026";     // when the view counts below were last refreshed
 
 // Episodes in release order (oldest first). views = public YouTube view count.
@@ -386,9 +384,6 @@ document.getElementById("pitch").innerHTML = [
   ["Jerusalem to New York", "filmed on location, with real people"],
   ["Short-form native", "built for YouTube Shorts, Reels and TikTok"],
 ].map(([a, b]) => `<li><strong>${esc(a)}</strong> ${esc(b)}</li>`).join("");
-const btn = document.getElementById("contact-btn");
-if (CONTACT_EMAIL) btn.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("The Big Question: partnership")}`;
-else btn.style.display = "none";
 </script>
 </body>
 </html>
