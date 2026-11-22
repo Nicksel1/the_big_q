@@ -7,7 +7,8 @@
 <meta name="description" content="The Big Question — street interviews asking people the questions that matter. 100K+ views across 20 episodes.">
 <meta property="og:title" content="The Big Question">
 <meta property="og:description" content="Street interviews asking people the questions that matter.">
-<meta property="og:image" content="https://i.ytimg.com/vi/m6TBofOalnM/oar2.jpg">
+<meta property="og:image" content="assets/logo-light.png">
+<link rel="icon" href="assets/logo-light.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600&display=swap" rel="stylesheet">
@@ -21,10 +22,11 @@
   --weight-body:400; --weight-head:600;
   --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.5rem;
   --space-6:2rem; --space-7:3rem; --space-8:4rem; --space-10:6rem; --space-12:8rem; --space-16:10rem;
-  --bg:#FBFBF9; --surface:#FFFFFF; --surface-sunken:#F2F1ED; --border:#E4E2DC; --border-strong:#C8C5BC;
-  --text:#14140F; --text-muted:#5B5951; --text-faint:#8A877D;
-  --accent:#B4471F; --accent-hover:#963A18; --accent-contrast:#FFFFFF; --focus:#2F6FED;
-  --bar:#14140F; --bar-muted:#C8C5BC;
+  --bg:#F7F9FC; --surface:#FFFFFF; --surface-sunken:#EDF1F7; --border:#DDE3EC; --border-strong:#BCC6D4;
+  --text:#0E1726; --text-muted:#4E5A6C; --text-faint:#7F8A9B;
+  --accent:#1F5FD6; --accent-hover:#184DB0; --accent-contrast:#FFFFFF; --focus:#0E1726;
+  --bar:#3678E9; --bar-muted:#BCC6D4;
+  --logo-light:block; --logo-dark:none;
   --overlay:rgb(10 10 8/.86); --scrim:linear-gradient(transparent, rgb(0 0 0/.72));
   --on-media:#FFFFFF;
   --radius-sm:6px; --radius-md:10px; --radius-lg:16px; --radius-pill:999px;
@@ -37,18 +39,20 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:#11110E; --surface:#191915; --surface-sunken:#1F1F1A; --border:#2C2B25; --border-strong:#46443B;
-    --text:#F2F1EC; --text-muted:#A9A69B; --text-faint:#7A776D;
-    --accent:#E0703F; --accent-hover:#F08452; --accent-contrast:#11110E;
-    --bar:#F2F1EC; --bar-muted:#46443B;
+    --bg:#0A1020; --surface:#111A2E; --surface-sunken:#16213A; --border:#22304D; --border-strong:#34466B;
+    --text:#EEF3FB; --text-muted:#A3B0C6; --text-faint:#7182A0;
+    --accent:#3678E9; --accent-hover:#5590F0; --accent-contrast:#FFFFFF; --focus:#EEF3FB;
+    --bar:#3678E9; --bar-muted:#34466B;
+    --logo-light:none; --logo-dark:block;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg:#11110E; --surface:#191915; --surface-sunken:#1F1F1A; --border:#2C2B25; --border-strong:#46443B;
-  --text:#F2F1EC; --text-muted:#A9A69B; --text-faint:#7A776D;
-  --accent:#E0703F; --accent-hover:#F08452; --accent-contrast:#11110E;
-  --bar:#F2F1EC; --bar-muted:#46443B;
+  --bg:#0A1020; --surface:#111A2E; --surface-sunken:#16213A; --border:#22304D; --border-strong:#34466B;
+  --text:#EEF3FB; --text-muted:#A3B0C6; --text-faint:#7182A0;
+  --accent:#3678E9; --accent-hover:#5590F0; --accent-contrast:#FFFFFF; --focus:#EEF3FB;
+  --bar:#3678E9; --bar-muted:#34466B;
+  --logo-light:none; --logo-dark:block;
   color-scheme: dark;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -77,15 +81,23 @@ h2 {
   font-weight: var(--weight-head); margin: 0 0 var(--space-6);
 }
 
+/* Logo */
+.logo-l { display: var(--logo-light); }
+.logo-d { display: var(--logo-dark); }
+.brand img { height: var(--space-7); width: auto; }
+.hero-logo img { width: 100%; height: auto; }
+
 /* Nav */
 .nav { border-bottom: var(--hairline) solid var(--border); }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: var(--space-8); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: var(--space-10); }
 .brand { font-weight: var(--weight-head); letter-spacing: var(--tracking-head); text-decoration: none; }
 .nav a.cta-sm { font-size: var(--text-sm); color: var(--text-muted); text-decoration: none; }
 .nav a.cta-sm:hover { color: var(--text); }
 
 /* Hero */
-.hero { padding: var(--space-12) 0 var(--space-10); }
+.hero { padding: var(--space-10) 0 var(--space-10); }
+.hero .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--space-8); align-items: center; }
+.hero-logo { max-width: 26rem; justify-self: end; width: 100%; }
 .hero h1 {
   font-size: var(--text-4xl); line-height: var(--leading-hero); letter-spacing: var(--tracking-hero);
   font-weight: var(--weight-head); margin: 0 0 var(--space-6); max-width: 14ch;
@@ -189,7 +201,11 @@ dialog::backdrop { background: var(--overlay); }
 .yt-link { display: block; text-align: center; margin-top: var(--space-4); color: var(--on-media); font-size: var(--text-sm); }
 
 @media (max-width: 760px) {
-  .hero { padding: var(--space-8) 0 var(--space-8); }
+  .hero { padding: var(--space-6) 0 var(--space-8); }
+  .hero .wrap { grid-template-columns: 1fr; gap: var(--space-5); }
+  .hero-logo { order: -1; justify-self: start; max-width: 14rem; }
+  .brand img { height: var(--space-6); }
+  .nav .wrap { height: var(--space-8); }
   section.block { padding-top: var(--space-8); }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(3) { border-left: 0; padding-left: 0; }
@@ -206,7 +222,10 @@ dialog::backdrop { background: var(--overlay); }
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#">The Big Question</a>
+    <a class="brand" href="#" aria-label="The Big Question, home">
+      <img class="logo-l" src="assets/logo-light.png" alt="The Big Question">
+      <img class="logo-d" src="assets/logo-dark.png" alt="The Big Question">
+    </a>
     <a class="cta-sm" href="#work-with-us">Work with us</a>
   </div>
 </header>
@@ -214,11 +233,17 @@ dialog::backdrop { background: var(--overlay); }
 <main>
   <section class="hero">
     <div class="wrap">
+      <div>
       <p class="label">Street interview series</p>
       <h1>One question. Real people. Honest answers.</h1>
       <p>The Big Question takes one question that matters (what is a Jew, why did God create the world, what brings real happiness) and puts it to people on the street, from the Jerusalem shuk to the streets of New York.</p>
       <a class="btn" href="#episodes">Watch the episodes</a>
       <a class="link" href="#work-with-us">Partner with us</a>
+      </div>
+      <div class="hero-logo">
+        <img class="logo-l" src="assets/logo-light.png" alt="">
+        <img class="logo-d" src="assets/logo-dark.png" alt="">
+      </div>
     </div>
   </section>
 
